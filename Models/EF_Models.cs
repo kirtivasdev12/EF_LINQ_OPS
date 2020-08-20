@@ -13,7 +13,7 @@ namespace EF_LINQ_OPS.Models
         public int reviewer_id { get; set; }
         public string f_name { get; set; }
         public string l_name { get; set; }
-        public int city { get; set; }
+        public string city { get; set; }
         public string state { get; set; }
 
         public int num_review { get; set; }
