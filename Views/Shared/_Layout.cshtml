@@ -1,48 +1,69 @@
-﻿<!DOCTYPE html>
+﻿@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - EF_LINQ_OPS</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
+    <title>Home page - Group4_Assignment2</title>
+    <style>
+
+
+        body {
+            background-image: radial-gradient( circle farthest-corner at 78% 59.3%, rgba(255,104,104,1) 0%, rgba(230,127,41,1) 90% );
+        }
+
+        .topnav {
+            overflow: hidden;
+            background-color: #333;
+        }
+
+            .topnav a {
+                float: left;
+                color: #f2f2f2;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+                font-size: 17px;
+            }
+    </style>
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/site.css" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">EF_LINQ_OPS</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+    <div class="topnav">
+        <a asp-controller="home" asp-action="Index">Home</a>
+        <a asp-controller="home" asp-action="Mexican">Mexican</a>
+        <a asp-controller="home" asp-action="Japanese">Japanese</a>
+        <a asp-controller="home" asp-action="Indian">Indian</a>
+        <a asp-controller="home" asp-action="Beersindex2">Beers</a>
+        <a asp-controller="home" asp-action="Chart">Graph</a>
+        <a asp-controller="home" asp-action="AboutUs">About Us</a>
+        <a asp-controller="Reviewers" asp-action="Index">Food Review</a>
+
     </div>
+@RenderBody()
+
+    <script>
+        // Script to open and close sidebar
+        function w3_open() {
+            document.getElementById("mySidebar").style.display = "block";
+        }
+
+        function w3_close() {
+            document.getElementById("mySidebar").style.display = "none";
+        }</script>
+
+
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2020 - EF_LINQ_OPS - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; MSBAIS-2020 Group4 Assignment 2 - <a asp-controller="home" asp-action="AboutUs">About Us</a>
         </div>
     </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @RenderSection("Scripts", required: false)
 </body>
 </html>
