@@ -33,5 +33,40 @@ namespace EF_LINQ_OPS.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        public IActionResult AboutUs()
+        {
+            return View();
+        }
+        public IActionResult Home()
+        {
+            return View();
+        }
+        public IActionResult BeersIndex2()
+        {
+            return View();
+        }
+        public IActionResult Beers()
+        {
+            return View();
+        }
+       
+        public IActionResult Indian()
+        {
+            return View();
+        }
+        public IActionResult Japanese()
+        {
+            return View();
+        }
+        public IActionResult Mexican()
+        {
+            return View();
+        }
+        public IActionResult Chart()
+        {
+            return View();
+        }
     }
 }
+
