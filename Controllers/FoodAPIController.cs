@@ -4,74 +4,37 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using EF_LINQ_OPS.Models;
-using RestSharp;
 using Newtonsoft.Json;
+using Microsoft.Extensions.Logging;
+using System.Net.Http;
+using System.Text.Json.Serialization;
+using RestSharp;
+using EF_LINQ_OPS.DataAccess;
+using EF_LINQ_OPS.Models;
+
+
 
 namespace EF_LINQ_OPS.Controllers
 {
-    public class HomeController : Controller
+    public class FoodAPIController : Controller
     {
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        public FoodAPIController(ILogger<HomeController> logger)
         {
             _logger = logger;
         }
 
+        //HttpClient httpClient;
+        
+
+        //static string BASE_URL = "https://tasty.p.rapidapi.com";
+        //static string API_KEY = "f65c9575d9msh7401166d92cbee6p105425jsnd68297f07086"; // Bibhas Key
         public IActionResult Index()
         {
-            return View();
-        }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
+            
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
-
-        public IActionResult AboutUs()
-        {
-            return View();
-        }
-        public IActionResult Home()
-        {
-            return View();
-        }
-        public IActionResult BeersIndex2()
-        {
-            return View();
-        }
-        public IActionResult Beers()
-        {
-            return View();
-        }
-       
-        public IActionResult Indian()
-        {
-            return View();
-        }
-        public IActionResult Japanese()
-        {
-            return View();
-        }
-        public IActionResult Mexican()
-        {
-            return View();
-        }
-        public IActionResult Chart()
-        {
-            return View();
-        }
-
-        public IActionResult Indian_api()
-        {
             var client = new RestClient("https://tasty.p.rapidapi.com/recipes/list?tags=indian&from=0&sizes=1000");
             var request = new RestRequest(Method.GET);
             request.AddHeader("x-rapidapi-host", "tasty.p.rapidapi.com");
@@ -100,11 +63,11 @@ namespace EF_LINQ_OPS.Controllers
             {
                 // HttpResponseMessage response = httpClient.GetAsync(NATIONAL_PARK_API_PATH).GetAwaiter().GetResult();
 
-                if (response.IsSuccessful)
+                if (response.IsSuccessful )
                 {
                     recipeData = response.Content.ToString();
-
-
+                    
+                      
                     //recipe = JsonConvert.DeserializeObject<Recipe>(response.ContentEncoding);
                 }
 
@@ -113,7 +76,7 @@ namespace EF_LINQ_OPS.Controllers
                 if (!recipeData.Equals(""))
                 {
                     //recipe = JsonConverterFactory(recipeData.);
-                    recipe = JsonConvert.DeserializeObject<Root>(recipeData);
+                   recipe = JsonConvert.DeserializeObject<Root>(recipeData);
                 }
             }
             catch (Exception e)
@@ -121,18 +84,55 @@ namespace EF_LINQ_OPS.Controllers
                 // This is a useful place to insert a breakpoint and observe the error message  
                 Console.WriteLine(e.Message);
             }
-            List<Result> res;
+            List<Result> res  ;
 
-            res = recipe.results.Where(r => r.user_ratings != null)
-            .OrderByDescending(r => r.user_ratings.score).ToList();
+             res  = recipe.results.Where(r =>r.user_ratings != null )
+             .OrderByDescending(r => r.user_ratings.score ).ToList() ;
 
             //res = recipe.results.Where(r => r.user_ratings != null).ToList();
             //return View(parks);
             return View(res);
         }
 
-        //return View();
+        public IActionResult Privacy()
+        {
+            return View();
+        }
+        public IActionResult MyLink()
+        {
+            return View();
+        }
+        /*public IActionResult UserAction(PersonModel person)
+        {
+            
+            string name = person.Name;
+            string city = person.City;
+            string gender = person.Attending;
+
+            return View();
+        }*/
+
+        [HttpGet]
+        public ViewResult UserAction()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        //public ViewResult UserAction(PersonModel person)
+        //{
+        //    PersonModel.AddResponse(person);
+        //    return View("UserActionResponse", person);
+
+        //}
+
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult Error()
+        {
+            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
     }
- }
+}
+
 
 

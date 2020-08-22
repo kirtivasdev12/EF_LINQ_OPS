@@ -1,0 +1,85 @@
+﻿
+@{
+    Layout = null;
+}
+
+@*<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Final_Project_API</title>
+    <link rel="stylesheet" href="~/wwwroot/css/site.css" />
+</head>
+<body>*@
+    <h2>Final Project: API consumption</h2>
+    <h4>This Page returns recipe data of most popular cuisines from the Tasty API of RapidApi.com.</h4>
+    <table>
+        <thead>
+            <tr>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Video_link</th>
+                <th>positive_reviews</th>
+                <th>negative_reviews</th>
+                <th>score</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Result root in Model)
+            {
+                @if ((root.name != null) && (root.thumbnail_url != null)
+                   && (root.video_url != null) && (root.user_ratings.count_positive != null)
+                   && (root.user_ratings.count_negative != null) && (root.user_ratings.score != null))
+                //break;
+                //else
+                {
+
+                    /* @if ((root.name == null) || (root.thumbnail_url == null) || (@root.video_url == null) )
+                             break;
+                         else
+                     {*/
+
+                    @if (root.name == null)
+                    { root.name = "Not Available"; }
+
+                    @if (root.thumbnail_url == null)
+                    { root.thumbnail_url = "Not Available"; }
+
+                    @if (root.video_url == null)
+                    { root.video_url = "Not Available"; }
+                    /*
+                        @if (root.user_ratings.count_positive == null)
+                        {
+                            root.user_ratings.count_positive = 0;
+                        }
+                        @if (root.user_ratings.count_negative == null)
+                        {
+                            root.user_ratings.count_negative = 0;
+                        }
+                        @if (root.user_ratings.score == null)
+                        {
+                            root.user_ratings.score = 0;
+                        }
+                    */
+                    <tr>
+                        <td><img src="@root.thumbnail_url" alt="" border=6 height=200 width=200></td>
+                        <td>@root.name</td>
+                        <!--<td><a href="root.original_video_url">original_video_link</a></td>-->
+                        <td><a href="@root.video_url">video_link</a></td>
+
+                        <td>@root.user_ratings.count_positive </td>
+                        <td>@root.user_ratings.count_negative </td>
+                        <td>@root.user_ratings.score</td>
+
+
+                    </tr>
+                }
+            }
+        @*</tbody>
+    </table>
+
+
+
+</body>*@
+
