@@ -5,13 +5,23 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Views\Reviewers\**" />
     <Compile Remove="Views\Reviewer\**" />
+    <Compile Remove="Views\Reviews\**" />
+    <Content Remove="Views\Reviewers\**" />
     <Content Remove="Views\Reviewer\**" />
+    <Content Remove="Views\Reviews\**" />
+    <EmbeddedResource Remove="Views\Reviewers\**" />
     <EmbeddedResource Remove="Views\Reviewer\**" />
+    <EmbeddedResource Remove="Views\Reviews\**" />
+    <None Remove="Views\Reviewers\**" />
     <None Remove="Views\Reviewer\**" />
+    <None Remove="Views\Reviews\**" />
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Remove="Controllers\ReviewersController.cs" />
+    <Compile Remove="Controllers\ReviewsController.cs" />
     <Compile Remove="Controllers\RevwController.cs" />
   </ItemGroup>
 

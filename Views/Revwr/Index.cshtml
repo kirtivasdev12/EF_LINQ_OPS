@@ -1,0 +1,77 @@
+﻿@model IEnumerable<EF_LINQ_OPS.Models.Reviewer>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.f_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.l_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.city)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.state)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.item_Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.item_desc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.review_Details)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.review_rating)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.f_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.l_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.city)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.state)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.item_Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.item_desc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.review_Details)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.review_rating)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.reviewer_id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.reviewer_id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.reviewer_id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

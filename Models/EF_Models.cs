@@ -16,7 +16,13 @@ namespace EF_LINQ_OPS.Models
         public string city { get; set; }
         public string state { get; set; }
 
-        public int num_review { get; set; }
+        public string item_Name { get; set; } //cuisines 
+
+        public string item_desc { get; set; } //type of dish
+
+        public string review_Details { get; set; }
+        public int review_rating { get; set; }
+
         public List<Review> Review { get; set; }
     }
 
@@ -25,8 +31,7 @@ namespace EF_LINQ_OPS.Models
         [Key]
         public int review_id { get; set; }
         public int reviewer_id { get; set; }
-        public string review_Details { get; set; }
-        public int review_rating { get; set; }
+        //public string review_Details { get; set; }
         public int item_id { get; set; }
     }
 
@@ -41,12 +46,12 @@ namespace EF_LINQ_OPS.Models
         
     }
 
-    public class ref_item_type
-    {
-        [Key]
-        public int item_code { get; set; }
-        public string item_desc { get; set; } 
-    }
+    //public class ref_item_type
+    //{
+    //    [Key]
+    //    public int item_code { get; set; }
+    //    public string item_desc { get; set; } 
+    //}
 
     
 }

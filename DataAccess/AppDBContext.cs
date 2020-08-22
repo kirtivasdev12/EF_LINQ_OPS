@@ -17,6 +17,6 @@ namespace EF_LINQ_OPS.DataAccess
 
     public DbSet<Items_reviewed> IRev { get; set; }
 
-        public DbSet<ref_item_type> IType { get; set; }
+        //public DbSet<ref_item_type> IType { get; set; }
     }
 }
